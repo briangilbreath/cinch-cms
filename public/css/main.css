@@ -1,0 +1,160 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'PT Serif', serif;
+	color:#4d4d4f;
+}
+
+a{
+	text-decoration: none;
+	color:#4d4d4f;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Titillium Web', sans-serif;
+	color:#4d4d4f;
+}
+
+p, ol, ul{
+	font-family: 'PT Serif', serif;
+	color: #4d4d4f;
+}
+
+.inner{
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.alert-info{
+	margin:20px 0 0;
+}
+
+.date{
+	text-transform: uppercase;
+	font-size: .7em;
+	font-weight: 100;
+	letter-spacing: 2px;
+	margin-top: -5px;
+	margin-bottom: 25px;
+	color: #838383;
+}
+
+.hero{
+	background: url('../images/arizona.jpg') center center no-repeat;
+	min-height: 400px;
+	position: relative;
+}
+
+.hero .logo{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+.hero .logo img{
+	width: 90px;
+	height: 90px;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.hero .logo .name{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 35px;
+	color: #fff;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 22px;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+}
+
+.hero .navigation{
+	position: absolute;
+	bottom: 0;
+}
+
+.hero .navigation .top-border{
+	position: absolute;
+	width: 1200px;
+	right: 0;
+	border-top: 3px solid #ede937;
+	top: 0;
+}
+
+.hero .navigation ul{
+	padding: 0;
+	margin: 0;
+}
+
+.hero .navigation ul li{
+	display: inline-block;
+	float: left;
+	text-decoration: none;
+	padding: 15px 5px;
+}
+
+.hero .navigation ul li:first-child{
+	margin-right: 15px;
+}
+
+.hero .navigation ul li a{
+	font-family: 'Titillium Web', sans-serif;
+	letter-spacing: 2px;
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+
+
+.content{
+	padding:20px 0;
+}
+
+.content .posts .post{
+	margin-bottom: 60px;
+}
+
+
+.footer{
+	text-align: center;
+	border-top: 3px solid #ede937;
+	padding-top:60px;
+	padding-bottom: 120px;
+	margin-top:180px;
+}
+
+.footer .logo{
+	display: inline-block;
+}
+
+.footer .logo img{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: 0 auto 25px;
+}
+
+.footer .logo .name{
+	margin-top:15px;
+	margin-bottom: 5px;
+	font-family: 'Titillium Web', sans-serif;
+	text-transform: uppercase;
+	font-size: 10px;
+	letter-spacing: 2px;
+}
+
+.footer .copyright{
+	font-family: 'Titillium Web', sans-serif;
+	text-transform: uppercase;
+	font-size: 10px;
+	letter-spacing: 2px;
+}
+
+
+
+
+
+
