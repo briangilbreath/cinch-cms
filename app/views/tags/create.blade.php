@@ -6,7 +6,7 @@
 
 
 
-	{{ Form::open(array('url' => 'tag')) }}
+	{{ Form::open(array('url' => 'admin.tag')) }}
 
 		<div class="field">
 			{{ Form::label('name', 'Tag name') }}
