@@ -43,6 +43,7 @@ p, ol, ul{
 	background: url('../images/arizona.jpg') center center no-repeat;
 	min-height: 400px;
 	position: relative;
+	background-size: cover;
 }
 
 .hero .logo{

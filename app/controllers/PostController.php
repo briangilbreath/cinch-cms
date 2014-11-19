@@ -90,7 +90,7 @@ class PostController extends \BaseController {
            }
 
            // then sync tags on post_photo
-           if($tags){
+           if($photos){
            	$post->photos()->sync($photos);
            }
            

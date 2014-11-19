@@ -31,7 +31,8 @@ $app = new Illuminate\Foundation\Application;
 // ));
 
 $env = $app->detectEnvironment(function(){
-    if($_SERVER['HTTP_HOST'] == 'local.briangilbreath.com')
+	$sub_host = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
+    if($sub_host == 'local')
     {
         return 'local'; 
         
