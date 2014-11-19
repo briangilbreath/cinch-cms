@@ -7,12 +7,11 @@
 	@foreach($posts as $post)
 
 		<div class="post row">
-
-			@if($post->photos()->first())
 			<div class="col-md-4">
-				<img src="/uploads/{{$post->photos()->first()['thumb_name']}}">
+				@if($post->photos()->first())
+					<img src="/uploads/{{$post->photos()->first()['thumb_name']}}">
+				@endif
 			</div>
-			@endif
 
 			<div class="col-md-8">
 				<h2>{{link_to('post/'. $post->id, $post->title)}}</h2>
