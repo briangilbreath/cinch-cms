@@ -10,7 +10,7 @@ class AdminController extends \BaseController {
 	 */
 	public function index()
 	{
-		return "Welcome. Your email address is " . Auth::user()->email;
+		return View::make('admin/index');
 	}
 
 	

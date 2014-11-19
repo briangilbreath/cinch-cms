@@ -118,6 +118,11 @@ p, ol, ul{
 	margin-bottom: 60px;
 }
 
+.content .posts .post img{
+	width:90%;
+	margin-top:20px;
+}
+
 
 .footer{
 	text-align: center;

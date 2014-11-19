@@ -16,7 +16,15 @@
         {{ HTML::style('css/image-picker.css'); }}
         {{ HTML::style('css/main.css'); }}
 
-
+        @if(isset($post))
+            @if($post->photos()->first())
+            <style>
+                .hero{
+                    background:url('/uploads/{{$post->photos()->first()['thumb_name']}}');
+                }
+            </style>
+            @endif
+        @endif
     </head>
     <body>
         <header class="hero" role="banner">

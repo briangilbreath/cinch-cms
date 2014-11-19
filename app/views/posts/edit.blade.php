@@ -26,6 +26,23 @@
 		</div>
 
 		<div class="form-group">
+			{{ Form::label('photo', 'Thumbnail') }}
+	
+			<select multiple="multiple" class="form-control image-picker" name="photos[]">
+				@foreach($photo_names as $photo_id => $photo_name)
+
+					@if(in_array($photo_id, $selected_photos))
+						<option data-img-src="/uploads/{{$photo_name}}" selected value="{{$photo_id}}">{{$photo_name}}</option>
+					@else
+						<option data-img-src="/uploads/{{$photo_name}}" value="{{$photo_id}}">{{$photo_name}}</option>
+					@endif
+					
+				@endforeach
+				
+			</select>
+		</div>
+
+		<div class="form-group">
 			{{Form::submit('Update Post!', array('class' => 'btn btn-success'))}}
 		</div>
 

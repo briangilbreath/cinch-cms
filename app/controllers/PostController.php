@@ -143,7 +143,30 @@ class PostController extends \BaseController {
 		}
 
 
-		return View::make('posts/edit', array('post' => $post, 'selected_tags' => $selected_tags, 'tags' => $tag_names));
+		//get selected photos
+		$post_photos = $post->photos;
+		$selected_photos = array();
+		foreach($post_photos as $photo){
+			array_push($selected_photos, $photo->id);
+		}
+
+		//get list of all photos
+		$photos = Photo::all();
+		$photo_names = array();
+		foreach($photos as $photo){
+			$photo_names[$photo->id] = $photo->name;
+		}
+
+		$data = array(
+			'post' => $post,
+			'selected_tags' => $selected_tags,
+			'tags' => $tag_names,
+			'selected_photos' => $selected_photos,
+			'photo_names' => $photo_names
+		);
+
+
+		return View::make('posts/edit', $data);
 	}
 
 
@@ -181,6 +204,7 @@ class PostController extends \BaseController {
            $post->title       = Input::get('title');
            $post->body        = Input::get('body');
            $tags              = Input::get('tags');
+           $photos            = Input::get('photos');
            $post->save();
 
            // if tags, then sync tags on post_tag table
@@ -199,6 +223,25 @@ class PostController extends \BaseController {
 			}
 
 			$post->tags()->detach($selected_tags);
+
+       	   }
+
+       	   // if photos, then sync tags on post_photo table
+           // else if photos are all deselected, detach from pivot table
+       	   if($photos){
+
+           	$post->photos()->sync($photos);
+
+       	   }else{
+
+			$post_photos = $post->photos;
+			$selected_photos = array();
+
+			foreach($post_photos as $photo){
+				array_push($selected_photos, $photo->id);
+			}
+
+			$post->photos()->detach($selected_photos);
 
        	   }
 
