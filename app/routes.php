@@ -12,12 +12,16 @@
 */
 
 Route::get('/', 'PostController@Index');
-Route::resource('post', 'PostController', ['only' => ['index', 'show']]);
+//Route::resource('post', 'PostController', ['only' => ['index', 'show']]);
+
+
 Route::resource('tag', 'TagController', ['only' => ['index', 'show']]);
 
 Route::get('login','SessionsController@Create');
 Route::get('logout','SessionsController@Destroy');
 Route::resource('sessions', 'SessionsController', ['only' => ['index', 'store', 'create', 'destroy']]);
+
+
 
 //admin area
 Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
@@ -28,3 +32,7 @@ Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 	Route::resource('photo', 'PhotoController');
 
 });
+
+
+//slugs for getting public posts
+Route::get('{slug?}', ['as' => 'post.show', 'uses' =>   'PostController@Show']);

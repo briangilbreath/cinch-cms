@@ -32,12 +32,12 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(function(){
 	$sub_host = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
-    if($sub_host == 'local')
+    if($sub_host == 'www' || '')
     {
-        return 'local'; 
+        return 'production'; 
         
     }else{
-        return 'production';
+        return 'local';
     }
 });
 

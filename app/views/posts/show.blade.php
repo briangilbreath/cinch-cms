@@ -11,13 +11,15 @@
 			<h5 class="date">{{$post->created_at}}</h5>
 			<p> {{nl2br($post->body)}}</p>
 
-			@if(!empty($post->tags))
+			@if($post->tags)
+				@if($post->tags->first())
 				<span>
 				Tags:
 				@foreach ($post->tags as $tag)
 				 {{link_to('tag/'. $tag->id,$tag->name)}}
 				@endforeach
 				</span>
+				@endif
 			@endif
 		</div>
 
