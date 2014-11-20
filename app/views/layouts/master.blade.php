@@ -20,7 +20,7 @@
             @if($post->photos()->first())
             <style>
                 .hero{
-                    background:url('/uploads/{{$post->photos()->first()['thumb_name']}}');
+                    background:url('/uploads/{{$post->photos()->first()['name']}}');
                 }
             </style>
             @endif

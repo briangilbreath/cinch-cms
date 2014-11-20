@@ -4,18 +4,18 @@
 @section('content')
 
 	<div class="posts">
-	@foreach($posts as $post)
+	@foreach($posts as $single_post)
 
 		<div class="post">
 
-				<h2>{{link_to('post/'. $post->id, $post->title)}}</h2>
-				<h5 class="date">{{$post->created_at}}</h5>
-				<p> {{Str::words($post->body,$words = 50, $end='...');}}</p>
+				<h2>{{link_to('post/'. $single_post->id, $single_post->title)}}</h2>
+				<h5 class="date">{{$single_post->created_at}}</h5>
+				<p> {{Str::words($single_post->body,$words = 50, $end='...');}}</p>
 
-				@if(!empty($post->tags))
+				@if(!empty($single_post->tags))
 					<span>
 					Tags:
-					@foreach ($post->tags as $tag)
+					@foreach ($single_post->tags as $tag)
 					 {{link_to('tag/'. $tag->id,$tag->name)}}
 					@endforeach
 					</span>
