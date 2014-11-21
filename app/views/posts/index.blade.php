@@ -1,31 +1,58 @@
-@extends('layouts/master')
+@extends('layouts.admin')
 
 
 @section('content')
 
-	<div class="posts">
-	@foreach($posts as $single_post)
+<h1>Posts</h1>
 
-		<div class="post">
-
-				<h2>{{link_to($single_post->slug, $single_post->title)}}</h2>
-				<h5 class="date">{{$single_post->created_at}}</h5>
-				<p> {{Str::words($single_post->body,$words = 50, $end='...');}}</p>
-				@if($single_post->tags)
-					@if($single_post->tags->first())
-						<span>
-						Tags:
-						@foreach ($single_post->tags as $tag)
-						 {{link_to('tag/'. $tag->id,$tag->name)}}
-						@endforeach
-						</span>
-					@endif
-				@endif
-
-		</div>
-
-	@endforeach
+<div class="table-responsive">
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th>Title</th>
+	      <th>Date</th>
+	      <th>Tags</th>
+	      <th>Edit</th>
+	      <th>Delete</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	   <div class="posts">
+		
+			@foreach($posts as $single_post)
+				<tr>
+			      <td>{{link_to($single_post->slug, $single_post->title)}}</td>
+			      <td>{{$single_post->created_at}}</td>
+			      <td>@if($single_post->tags)
+							@if($single_post->tags->first())
+								<span>
+								@foreach ($single_post->tags as $tag)
+								 {{link_to('tag/'. $tag->id,$tag->name)}}
+								@endforeach
+								</span>
+							@endif
+						@endif
+				  </td>
+			      <td>
+					  <button class="btn btn-success btn-sm" type="button">
+					   {{link_to('admin/post/'.$single_post->id.'/edit', 'Edit')}}  
+					  </button>
+				  </td>
+			      <td>
+			      	<button class="btn btn-warning btn-sm" type="button">
+					    Delete 
+					</button>
+			      </td>
+			   	</tr>
+			@endforeach
+	 	
 	</div>
+	   
+	  </tbody>
+	</table>
+</div>
+
+	
 
 
 	<?php echo $posts->links(); ?>

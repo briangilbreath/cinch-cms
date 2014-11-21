@@ -11,6 +11,10 @@
 			<h5 class="date">{{$post->created_at}}</h5>
 			<p> {{nl2br($post->body)}}</p>
 
+			<div class="sign-off">
+				{{ HTML::image('images/sign-off.png', $alt="Brian Gilbreath", $attributes = array()) }} 
+			</div>
+
 			@if($post->tags)
 				@if($post->tags->first())
 				<span>
@@ -21,6 +25,8 @@
 				</span>
 				@endif
 			@endif
+
+
 		</div>
 
 	</article>

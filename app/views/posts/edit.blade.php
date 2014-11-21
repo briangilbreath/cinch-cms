@@ -1,10 +1,10 @@
-@extends('layouts/master')
+@extends('layouts.admin')
 
 
 @section('content')
 
 
-
+<h1> Edit Post </h1>
 
 	{{ Form::model($post, array('route' => array('admin.post.update', $post->id), 'method' => 'PUT'))}}
 

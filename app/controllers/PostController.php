@@ -8,19 +8,31 @@ class PostController extends \BaseController {
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
+    /**
+	 * Display a listing of the resource, public front page.
+	 *
+	 * @return Response
+	 */
+	public function all()
+	{
+		$posts = Post::orderBy('created_at', 'desc')->paginate(4);
+
+		return View::make('posts/all', array('posts' => $posts));
+	}
+
+
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the resource, admin area.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		$posts = Post::orderBy('created_at', 'desc')->paginate(4);
+		$posts = Post::orderBy('created_at', 'desc')->paginate(12);
 
 
 		return View::make('posts/index', array('posts' => $posts));
 	}
-
 
 	/**
 	 * Show the form for creating a new resource.
@@ -114,7 +126,13 @@ class PostController extends \BaseController {
 		//$post = Post::find($id);
 		$post = Post::findBySlug($slug);
 
-		return View::make('posts/show', array('post' => $post));
+		if($post){
+			return View::make('posts/show', array('post' => $post));
+		}else{
+			return Redirect::to('/');
+		}
+
+		
 	}
 
 

@@ -39,6 +39,12 @@ p, ol, ul{
 	color: #838383;
 }
 
+.sign-off img{
+	width: 10px;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
 .hero{
 	background: url('../images/arizona.jpg') center center no-repeat;
 	min-height: 400px;

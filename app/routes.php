@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'PostController@Index');
+Route::get('/', 'PostController@All');
 //Route::resource('post', 'PostController', ['only' => ['index', 'show']]);
 
 
