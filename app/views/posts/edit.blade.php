@@ -3,8 +3,15 @@
 
 @section('content')
 
+<div class="row">
+<h1> Edit Post </h1> 
+<div class="form-group">
+	{{ Form::label('', 'Url') }}
+	<div class="well well-sm">
+		{{ $post->slug }}
+	</div>
+</div>
 
-<h1> Edit Post </h1>
 
 	{{ Form::model($post, array('route' => array('admin.post.update', $post->id), 'method' => 'PUT'))}}
 
@@ -13,6 +20,7 @@
 			{{ Form::text('title', null, array('class' => 'form-control')) }}
 			<?php echo $errors->first('title'); ?>
 		</div>
+
 
 		<div class="form-group">
 			{{ Form::label('body', 'Post Body') }}
@@ -25,7 +33,7 @@
 			{{ Form::select('tags[]', $tags, $selected_tags, array('multiple','class' => 'form-control')) }}
 		</div>
 
-		<div class="form-group">
+		<div class="form-group ajaxable">
 			{{ Form::label('photo', 'Thumbnail') }}
 	
 			<select multiple="multiple" class="form-control image-picker" name="photos[]">
@@ -40,6 +48,10 @@
 				@endforeach
 				
 			</select>
+
+			<div class="ajax-pagination">
+				<?php echo $photos->links(); ?>
+			</div>
 		</div>
 
 		<div class="form-group">

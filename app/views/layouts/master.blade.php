@@ -21,6 +21,8 @@
             <style>
                 .hero{
                     background:url('/uploads/{{$post->photos()->first()['name']}}');
+                    background-size: cover;
+                    background-position-y: 20%;
                 }
             </style>
             @endif

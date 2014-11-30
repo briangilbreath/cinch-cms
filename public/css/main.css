@@ -10,6 +10,10 @@ a{
 	color:#4d4d4f;
 }
 
+a:hover, a:focus{
+	color: #80c342;
+}
+
 h1,h2,h3,h4,h5,h6{
 	font-family: 'Titillium Web', sans-serif;
 	color:#4d4d4f;
@@ -37,6 +41,34 @@ p, ol, ul{
 	margin-top: -5px;
 	margin-bottom: 25px;
 	color: #838383;
+}
+
+span.tags{
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: 100;
+	letter-spacing: 2px;
+	margin-top: -5px;
+	margin-bottom: 25px;
+	color: #838383;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+span.tags a{
+		text-transform: uppercase;
+	font-size: 10px;
+	font-weight: 100;
+	letter-spacing: 2px;
+	margin-top: -5px;
+	margin-bottom: 25px;
+	color: #838383;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.well-sm {
+padding: 2px 4px;
+border-radius: 3px;
+font-size: .9em;
 }
 
 .sign-off img{

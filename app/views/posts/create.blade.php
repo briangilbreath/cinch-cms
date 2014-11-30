@@ -25,7 +25,7 @@
 			{{ Form::select('tags[]', $tag_names, '', array('multiple', 'class' => 'form-control')) }}
 		</div>
 
-		<div class="form-group">
+		<div class="form-group ajaxable">
 			{{ Form::label('photo', 'Thumbnail') }}
 			<select multiple="multiple" class="form-control image-picker" name="photos[]">
 				@foreach($photo_names as $photo_id => $photo_name)
@@ -35,7 +35,12 @@
 				@endforeach
 				
 			</select>
+			<div class="ajax-pagination">
+				<?php echo $photos->links(); ?>
+			</div>
 		</div>
+
+		
 
 
 

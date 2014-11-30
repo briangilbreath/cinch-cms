@@ -13,7 +13,7 @@
 				<p> {{Str::words($single_post->body,$words = 50, $end='...');}}</p>
 				@if($single_post->tags)
 					@if($single_post->tags->first())
-						<span>
+						<span class="tags">
 						Tags:
 						@foreach ($single_post->tags as $tag)
 						 {{link_to('tag/'. $tag->id,$tag->name)}}

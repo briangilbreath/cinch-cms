@@ -17,7 +17,7 @@
 
 			@if($post->tags)
 				@if($post->tags->first())
-				<span>
+				<span class="tags">
 				Tags:
 				@foreach ($post->tags as $tag)
 				 {{link_to('tag/'. $tag->id,$tag->name)}}

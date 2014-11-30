@@ -50,14 +50,14 @@ class PostController extends \BaseController {
 		}
 
 		//get recent photos
-		$photos = Photo::orderBy('created_at', 'desc')->take(12)->get();
+		$photos = Photo::orderBy('created_at', 'desc')->paginate(6);
 		$photo_names = array();
 		foreach($photos as $photo){
 			$photo_names[$photo->id] = $photo->name;
 		}
 
 
-		return View::make('posts/create', array('tag_names' => $tag_names, 'photo_names' => $photo_names));
+		return View::make('posts/create', array('tag_names' => $tag_names, 'photo_names' => $photo_names, 'photos' => $photos));
 	}
 
 
@@ -109,7 +109,7 @@ class PostController extends \BaseController {
 
            // redirect
            Session::flash('message', 'Successfully created post!');
-           return Redirect::to('admin/post');
+           return Redirect::to('admin/post/'.$post->id.'/edit');
 
          }
 	}
@@ -154,14 +154,6 @@ class PostController extends \BaseController {
 			array_push($selected_tags, $tag->id);
 		}
 
-		//get list of all tags
-		$tags = Tag::all();
-		$tag_names = array();
-		foreach($tags as $tag){
-			$tag_names[$tag->id] = $tag->name;
-		}
-
-
 		//get selected photos
 		$post_photos = $post->photos;
 		$selected_photos = array();
@@ -169,8 +161,15 @@ class PostController extends \BaseController {
 			array_push($selected_photos, $photo->id);
 		}
 
+		//get list of all tags
+		$tags = Tag::all();
+		$tag_names = array();
+		foreach($tags as $tag){
+			$tag_names[$tag->id] = $tag->name;
+		}
+
 		//get list of all photos
-		$photos = Photo::all();
+		$photos = Photo::orderBy('created_at', 'desc')->paginate(6);
 		$photo_names = array();
 		foreach($photos as $photo){
 			$photo_names[$photo->id] = $photo->name;
@@ -180,6 +179,7 @@ class PostController extends \BaseController {
 			'post' => $post,
 			'selected_tags' => $selected_tags,
 			'tags' => $tag_names,
+			'photos' => $photos,
 			'selected_photos' => $selected_photos,
 			'photo_names' => $photo_names
 		);
@@ -283,7 +283,7 @@ class PostController extends \BaseController {
 		 $post->delete();
 
 		   // redirect
-           Session::flash('message', 'Successfully delete post!');
+           Session::flash('message', 'Successfully deleted post!');
    		   return Redirect::to('admin/post');
 	}
 

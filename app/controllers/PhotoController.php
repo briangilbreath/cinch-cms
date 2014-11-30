@@ -2,6 +2,11 @@
 
 class PhotoController extends \BaseController {
 
+	public function __construct()
+    {
+        $this->beforeFilter('csrf', array('on' => 'post'));
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /photo
@@ -10,7 +15,8 @@ class PhotoController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$photos = Photo::orderBy('created_at', 'desc')->paginate(8);
+		return View::make('photos.index', array('photos' => $photos));
 	}
 
 	/**
@@ -110,7 +116,15 @@ class PhotoController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$photo = Photo::find($id);
+
+		$data = array(
+			'photo' => $photo,
+		);
+
+
+		return View::make('photos.edit', $data);
+
 	}
 
 	/**
@@ -123,6 +137,34 @@ class PhotoController extends \BaseController {
 	public function update($id)
 	{
 
+		$rules = array(
+            'title'       => 'required',
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+
+        // process validation
+        if ($validator->fails()) {
+
+        	Session::flash('message', 'Oops, errors!');
+            return Redirect::to('admin/photo/'.$id.'/edit')
+                ->withErrors($validator)
+                ->withInput();
+
+        } else {
+
+		   // store
+           $photo = Photo::find($id);
+           $photo->title       = Input::get('title');
+           $photo->save();
+
+      
+           // redirect
+           Session::flash('message', 'Successfully updated photo!');
+   		   return Redirect::to('admin/photo/'.$id.'/edit');
+         }
+
 	}
 
 	/**
@@ -134,7 +176,12 @@ class PhotoController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$photo = Photo::find($id);
+		$photo->delete();
+
+		   // redirect
+           Session::flash('message', 'Successfully deleted photo!');
+   		   return Redirect::to('admin/photo');
 	}
 
 }

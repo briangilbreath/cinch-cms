@@ -34,15 +34,20 @@
 						@endif
 				  </td>
 			      <td>
+			      	<a href="/admin/post/{{$single_post->id}}/edit">
 					  <button class="btn btn-success btn-sm" type="button">
-					   {{link_to('admin/post/'.$single_post->id.'/edit', 'Edit')}}  
+						Edit
 					  </button>
+					</a>
 				  </td>
+
 			      <td>
-			      	<button class="btn btn-warning btn-sm" type="button">
-					    Delete 
-					</button>
+		      		{{ Form::open(array('url' => 'admin/post/' . $single_post->id, 'onsubmit' => 'if(!confirm("Are you sure to delete '. $single_post->title . ' item?")){return false;};')) }}
+				        {{ Form::hidden('_method', 'DELETE') }}
+				        {{ Form::submit('Delete?', array('class' => 'btn btn-warning')) }}
+				    {{ Form::close() }}
 			      </td>
+			      
 			   	</tr>
 			@endforeach
 	 	
