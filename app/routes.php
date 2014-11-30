@@ -27,6 +27,7 @@ Route::resource('sessions', 'SessionsController', ['only' => ['index', 'store', 
 Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 
 	Route::get('/', 'AdminController@Index');
+	Route::get('/options', 'AdminController@Options');
 	Route::resource('post', 'PostController');
 	Route::resource('tag', 'TagController');
 	Route::resource('photo', 'PhotoController');

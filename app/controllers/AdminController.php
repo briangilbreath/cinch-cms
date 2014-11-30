@@ -13,6 +13,26 @@ class AdminController extends \BaseController {
 		return View::make('admin/index');
 	}
 
+
+
+
+	public function options()
+	{
+
+		$options = new src\Option;
+		$intro = $options->loadIntro();
+
+
+		$data = array(
+
+			'intro' => $intro,
+
+
+		);
+
+		return View::make('admin/options', $data);
+	}
+
 	
 
 }
