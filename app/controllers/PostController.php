@@ -127,7 +127,7 @@ class PostController extends \BaseController {
 		$post = Post::findBySlug($slug);
 
 		if($post){
-			return View::make('posts/show', array('post' => $post, 'option'));
+			return View::make('posts/show', array('post' => $post));
 		}else{
 			return Redirect::to('/');
 		}

@@ -35,5 +35,8 @@ Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 });
 
 
+//install
+Route::get('install','SetupController@Install');
+
 //slugs for getting public posts
 Route::get('{slug?}', ['as' => 'post.show', 'uses' =>   'PostController@Show']);
