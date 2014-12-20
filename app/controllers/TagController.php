@@ -15,7 +15,7 @@ class TagController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tags = tag::orderBy('created_at', 'desc')->paginate(3);
+		$tags = Tag::orderBy('created_at', 'desc')->paginate(3);
 
 
 		return View::make('tags/index', array('tags' => $tags));
@@ -59,7 +59,7 @@ class TagController extends \BaseController {
         } else {
 
 		   // store
-           $tag             = new tag;
+           $tag             = new Tag;
            $tag->name       = Input::get('name');
            $tag->save();
 
@@ -139,7 +139,7 @@ class TagController extends \BaseController {
 
 
 		   // store
-           $tag = tag::find($id);
+           $tag = Tag::find($id);
            $tag->name       = Input::get('name');
            $tag->save();
 
@@ -158,7 +158,7 @@ class TagController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		 $tag = tag::find($id);
+		 $tag = Tag::find($id);
 		 $tag->delete();
 
 		   // redirect
