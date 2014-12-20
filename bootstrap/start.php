@@ -24,22 +24,22 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-// $env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(array(
 
-// 	'local' => array('homestead'),
+	'local' => array('Brians-MacBook-Pro-2.local'),
 
-// ));
+));
 
-$env = $app->detectEnvironment(function(){
-	$sub_host = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
-    if($sub_host == 'www' || '')
-    {
-        return 'production'; 
+// $env = $app->detectEnvironment(function(){
+// 	$sub_host = array_shift((explode(".",$_SERVER['HTTP_HOST'])));
+//     if($sub_host == 'www' || '')
+//     {
+//         return 'production'; 
         
-    }else{
-        return 'local';
-    }
-});
+//     }else{
+//         return 'local';
+//     }
+// });
 
 /*
 |--------------------------------------------------------------------------
