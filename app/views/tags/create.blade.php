@@ -6,7 +6,7 @@
 
 
 
-	{{ Form::open(array('url' => 'admin/tag')) }}
+	{{ Form::open(array('route' => 'admin.tag.store')) }}
 
 		<div class="field">
 			{{ Form::label('name', 'Tag name') }}
