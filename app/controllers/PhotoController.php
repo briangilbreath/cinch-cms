@@ -72,7 +72,6 @@ class PhotoController extends \BaseController {
 
 			$image->save($publicUploadPath . $fileName)
 				->fit(200,200)
-				->greyScale()
 				->save($publicUploadPath . $fileThumbName);
 
 
