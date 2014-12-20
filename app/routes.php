@@ -27,7 +27,7 @@ Route::resource('sessions', 'SessionsController', ['only' => ['index', 'store', 
 Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 
 	Route::get('/', 'AdminController@Index');
-	Route::get('/options', 'AdminController@Options');
+	Route::get('/options', 'AdminController@options');
 	Route::resource('post', 'PostController');
 	Route::resource('tag', 'TagController');
 	Route::resource('photo', 'PhotoController');
@@ -35,8 +35,9 @@ Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 });
 
 
-//install
-Route::get('install','SetupController@Install');
+//install process
+Route::get('install','SetupController@install');
+Route::post('installing','SetupController@create_admin_user');
 
 //slugs for getting public posts
 Route::get('{slug?}', ['as' => 'post.show', 'uses' =>   'PostController@Show']);
