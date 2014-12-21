@@ -2,22 +2,23 @@
 
 class TagController extends \BaseController {
 
+	protected $cache_time = 15;
+
 	public function __construct()
     {
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
 	/**
-	 * Display a listing of the resource, public front page.
+	 * Display a listing of the resource, public front page. Cached.
 	 *
 	 * @return Response
 	 */
 	public function all()
 	{
-		$tags = Tag::orderBy('created_at', 'desc')->paginate(10);
+		$tags = Tag::remember($this->cache_time)->orderBy('created_at', 'desc')->paginate(10);
 
-
-		return View::make('tags/index', array('tags' => $tags));
+		return View::make('tags/all', array('tags' => $tags));
 	}
 
 	/**
@@ -85,24 +86,41 @@ class TagController extends \BaseController {
 
 
 	/**
-	 * Display the specified resource.
+	 * Display the specified resource. Cached.
 	 *
-	 * @param  int  $id
+	 * @param  int  $idate(format)
 	 * @return Response
 	 */
 	public function show($slug)
 	{
-		$tag = Tag::findBySlug($slug);
+		$tag = Tag::remember($this->cache_time)->where('slug','=', $slug)->with([
+		    'posts' => function ($query) {
+		        $query->remember($this->cache_time);
+		     }
+		])->first();
 
-		$posts = $tag->posts()->orderBy('created_at', 'desc')->paginate(5);
+		if(isset($tag)){
+
+			$posts = $tag->posts()->orderBy('created_at', 'desc')->remember($this->cache_time)->with([
+		    'tags' => function ($query) {
+		        $query->remember($this->cache_time);
+		     }
+			])->paginate(5);
+
+			
+		    if($tag->posts->count()){
+		    	return View::make('tags/show', array('posts' => $posts, 'title'=>$tag->name));
+		    	
+		    }else{
+		    	return 'No posts tagged with that';
+		    }
+
+		}else{
+			//if no tag found, redirect to homepage
+			return Redirect::to('/');
+		}
 
 		
-	    if($tag->posts->count()){
-	    	return View::make('tags/show', array('posts' => $posts, 'title'=>$tag->name));
-	    	
-	    }else{
-	    	return 'No posts tagged with that';
-	    }
 
 		
 	}

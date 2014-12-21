@@ -17,7 +17,7 @@
         {{ HTML::style('css/main.css'); }}
 
         @if(isset($post))
-            @if($post->photos()->first())
+            @if($post->photos->first())
             <style>
                 .hero{
                     background:url('/uploads/{{$post->photos()->first()['name']}}');

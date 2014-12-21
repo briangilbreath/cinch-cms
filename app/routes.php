@@ -11,10 +11,13 @@
 |
 */
 
+// Debug for showing SQL queries
+// Event::listen('illuminate.query', function($query){
+// 	var_dump($query);
+// });
+
 Route::get('/', 'PostController@All');
 Route::get('/tags', 'TagController@All');
-//Route::resource('post', 'PostController', ['only' => ['index', 'show']]);
-
 
 Route::resource('tag', 'TagController', ['only' => ['show']]);
 
@@ -29,6 +32,7 @@ Route::group(array('prefix'=> 'admin', 'before' => 'auth'), function(){
 
 	Route::get('/', 'AdminController@Index');
 	Route::get('/options', 'AdminController@options');
+	Route::get('/options/clear-cache', 'AdminController@clear_cache');
 	Route::resource('post', 'PostController');
 	Route::resource('tag', 'TagController');
 	Route::resource('photo', 'PhotoController');

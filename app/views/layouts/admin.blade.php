@@ -38,7 +38,7 @@
 		           	 <li><a href="/admin">Dashboard</a></li>
 		           </ul>
 		           <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">Settings</a></li>
+		            <li><a href="/admin/options">Settings</a></li>
 		            <li><a href="/logout">Logout</a></li>
 		           </ul>
 		   

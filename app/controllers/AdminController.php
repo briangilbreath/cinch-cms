@@ -13,9 +13,6 @@ class AdminController extends \BaseController {
 		return View::make('admin/index');
 	}
 
-
-
-
 	public function options()
 	{
 
@@ -27,10 +24,21 @@ class AdminController extends \BaseController {
 
 			'intro' => $intro,
 
-
 		);
 
 		return View::make('admin/options', $data);
+	}
+
+
+
+
+	public function clear_cache()
+	{
+		Cache::flush();
+
+		// redirect
+		Session::flash('message', 'Site cache cleared');
+		return Redirect::to('admin/options');
 	}
 
 	

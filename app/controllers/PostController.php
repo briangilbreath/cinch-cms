@@ -2,6 +2,7 @@
 
 class PostController extends \BaseController {
 
+	protected $cache_time = 15;
 
 	public function __construct()
     {
@@ -9,13 +10,17 @@ class PostController extends \BaseController {
     }
 
     /**
-	 * Display a listing of the resource, public front page.
+	 * Display a listing of the resource, public front page. Cached.
 	 *
 	 * @return Response
 	 */
 	public function all()
 	{
-		$posts = Post::orderBy('created_at', 'desc')->paginate(4);
+		$posts = Post::remember($this->cache_time)->orderBy('created_at', 'desc')->with([
+		    'tags' => function ($query) {
+		        $query->remember($this->cache_time);
+		     }
+		])->paginate(4);
 
 		return View::make('posts/all', array('posts' => $posts));
 	}
@@ -116,25 +121,28 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Display the specified resource.
+	 * Display the specified resource. Cached.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($slug)
 	{
-		//$post = Post::find($id);
-		$post = Post::findBySlug($slug);
+
+		$post = Post::remember($this->cache_time)->where('slug','=', $slug)->with([
+		    'tags' => function ($query) {
+		        $query->remember($this->cache_time);
+		     },
+		     'photos' => function ($query) {
+		        $query->remember($this->cache_time);
+		     }
+		])->first();
 
 		if($post){
 			return View::make('posts/show', array('post' => $post));
 		}else{
 			return Redirect::to('/');
 		}
-
-		
-
-		
 
 		
 	}
