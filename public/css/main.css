@@ -12,6 +12,12 @@ a{
 
 a:hover, a:focus{
 	color: #80c342;
+	text-decoration: underline;
+}
+
+p a{
+	color:#80c342;
+	text-decoration: none;
 }
 
 h1,h2,h3,h4,h5,h6{
