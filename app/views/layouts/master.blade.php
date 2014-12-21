@@ -37,8 +37,9 @@
                     <div class="navigation">
                         <div class="top-border"></div>
                         <ul role="navigation">
-                            <li> {{link_to('tag/1', 'Category 1')}} </li>
-                            <li> {{link_to('tag/2', 'Category 2')}} </li>
+                            <li> {{link_to('tag/articles', 'Articles')}} </li>
+                            <li> {{link_to('tag/thoughts', 'Thoughts')}} </li>
+                            <li> {{link_to('about', 'About')}} </li>
                         </ul>
                     </div>
                 </nav>

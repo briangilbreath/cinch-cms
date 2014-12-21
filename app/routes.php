@@ -12,10 +12,11 @@
 */
 
 Route::get('/', 'PostController@All');
+Route::get('/tags', 'TagController@All');
 //Route::resource('post', 'PostController', ['only' => ['index', 'show']]);
 
 
-Route::resource('tag', 'TagController', ['only' => ['index', 'show']]);
+Route::resource('tag', 'TagController', ['only' => ['show']]);
 
 Route::get('login','SessionsController@Create');
 Route::get('logout','SessionsController@Destroy');
@@ -40,4 +41,5 @@ Route::get('install','SetupController@install');
 Route::post('installing','SetupController@create_admin_user');
 
 //slugs for getting public posts
+Route::get('/tag/{slug?}', ['as' => 'tag.show', 'uses' =>   'TagController@Show']);
 Route::get('{slug?}', ['as' => 'post.show', 'uses' =>   'PostController@Show']);

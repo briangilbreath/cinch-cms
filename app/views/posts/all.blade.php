@@ -16,7 +16,7 @@
 						<span class="tags">
 						Tags:
 						@foreach ($single_post->tags as $tag)
-						 {{link_to('tag/'. $tag->id,$tag->name)}}
+						 {{link_to('tag/'. $tag->slug ,$tag->name)}}
 						@endforeach
 						</span>
 					@endif

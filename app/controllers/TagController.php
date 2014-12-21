@@ -7,6 +7,18 @@ class TagController extends \BaseController {
         $this->beforeFilter('csrf', array('on' => 'post'));
     }
 
+	/**
+	 * Display a listing of the resource, public front page.
+	 *
+	 * @return Response
+	 */
+	public function all()
+	{
+		$tags = Tag::orderBy('created_at', 'desc')->paginate(10);
+
+
+		return View::make('tags/index', array('tags' => $tags));
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -15,7 +27,7 @@ class TagController extends \BaseController {
 	 */
 	public function index()
 	{
-		$tags = Tag::orderBy('created_at', 'desc')->paginate(3);
+		$tags = Tag::orderBy('created_at', 'desc')->paginate(10);
 
 
 		return View::make('tags/index', array('tags' => $tags));
@@ -78,9 +90,9 @@ class TagController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($slug)
 	{
-		$tag = Tag::find($id);
+		$tag = Tag::findBySlug($slug);
 
 		$posts = $tag->posts()->orderBy('created_at', 'desc')->paginate(5);
 
@@ -162,8 +174,8 @@ class TagController extends \BaseController {
 		 $tag->delete();
 
 		   // redirect
-           Session::flash('message', 'Successfully delete tag!');
-   		   return Redirect::to('tag');
+           Session::flash('message', 'Successfully deleted tag!');
+   		   return Redirect::to('admin/tag');
 	}
 
 

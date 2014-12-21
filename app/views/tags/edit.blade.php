@@ -8,15 +8,16 @@
 
 	{{ Form::model($tag, array('route' => array('admin.tag.update', $tag->id), 'method' => 'PUT'))}}
 
-		<div class="field">
+		<div class="form-group">
 			{{ Form::label('name', 'Tag name') }}
-			{{ Form::text('name') }}
+			{{ Form::text('name', null, array('class' => 'form-control')) }}
 			<?php echo $errors->first('name'); ?>
 		</div>
 
-		<div class="field">
-			{{Form::submit('Update tag!')}}
+		<div class="form-group">
+			{{Form::submit('Update Tag!', array('class' => 'btn btn-success'))}}
 		</div>
+		
 
 	{{ Form::close() }}
 

@@ -131,10 +131,11 @@ font-size: .9em;
 	float: left;
 	text-decoration: none;
 	padding: 15px 5px;
+	margin-right: 15px;
 }
 
-.hero .navigation ul li:first-child{
-	margin-right: 15px;
+.hero .navigation ul li:last-child{
+	margin-right: 0px;
 }
 
 .hero .navigation ul li a{

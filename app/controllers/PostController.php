@@ -249,7 +249,7 @@ class PostController extends \BaseController {
 
        	   }
 
-       	   // if photos, then sync tags on post_photo table
+       	   // if photos, then sync photos on post_photo table
            // else if photos are all deselected, detach from pivot table
        	   if($photos){
 
