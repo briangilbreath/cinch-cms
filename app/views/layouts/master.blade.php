@@ -2,10 +2,19 @@
 <html lang="en-US">
     <head>
         <meta charset="utf-8">
+        @if(!empty($page_title))
+        <title>{{{$page_title}}} | Brian Gilbreath</title>
+        @if(!empty($page_description))
+        <meta name="description" content="{{{$page_description}}}">
+        @endif
+        @else
         <title>Brian Gilbreath</title>
+        <meta name="description" content="The official site of Brian Gilbreath. Learn about PHP, Laravel, Wordpress, Front End Web Development, and CSS.">
+        @endif
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="/images/brian-gilbreath-logo.png" type="image/x-icon" />
 
         <!--[if lt IE 9]>
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>

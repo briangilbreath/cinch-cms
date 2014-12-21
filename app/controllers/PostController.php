@@ -7,6 +7,7 @@ class PostController extends \BaseController {
 	public function __construct()
     {
         $this->beforeFilter('csrf', array('on' => 'post'));
+
     }
 
     /**
@@ -129,6 +130,7 @@ class PostController extends \BaseController {
 	public function show($slug)
 	{
 
+		//query
 		$post = Post::remember($this->cache_time)->where('slug','=', $slug)->with([
 		    'tags' => function ($query) {
 		        $query->remember($this->cache_time);
@@ -138,6 +140,11 @@ class PostController extends \BaseController {
 		     }
 		])->first();
 
+		//meta info
+		View::share('page_title', $post->title);
+		View::share('page_description',  trim(preg_replace("/\s+/", ' ', Str::words($post->body,$words = 40, $end='...'))));
+
+		//make view
 		if($post){
 			return View::make('posts/show', array('post' => $post));
 		}else{

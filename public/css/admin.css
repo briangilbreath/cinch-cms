@@ -122,3 +122,17 @@ a{
   display: inline-block;
   border-radius: 50%;
 }
+
+
+.admin h1{
+  display: inline-block;
+}
+
+.view-post-button{
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -15px;
+  margin-left: 20px;
+}
+
+

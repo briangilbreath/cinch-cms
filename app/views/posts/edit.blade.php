@@ -4,12 +4,16 @@
 @section('content')
 
 <div class="row">
-<h1> Edit Post </h1> 
+<h1> Edit Post </h1>  <a class="btn btn-success view-post-button" href="/{{ $post->slug }}" target="_blank">View Post</a>
 <div class="form-group">
 	{{ Form::label('', 'Url') }}
 	<div class="well well-sm">
 		{{ $post->slug }}
 	</div>
+
+
+
+	
 </div>
 
 

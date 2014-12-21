@@ -101,6 +101,7 @@ class TagController extends \BaseController {
 
 		if(isset($tag)){
 
+			// fetch query
 			$posts = $tag->posts()->orderBy('created_at', 'desc')->remember($this->cache_time)->with([
 		    'tags' => function ($query) {
 		        $query->remember($this->cache_time);
@@ -108,6 +109,11 @@ class TagController extends \BaseController {
 			])->paginate(5);
 
 			
+			// pass meta description
+
+			View::share('page_title', $tag->name);
+
+			// make view
 		    if($tag->posts->count()){
 		    	return View::make('tags/show', array('posts' => $posts, 'title'=>$tag->name));
 		    	
