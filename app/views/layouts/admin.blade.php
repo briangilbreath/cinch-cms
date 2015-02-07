@@ -38,8 +38,10 @@
 		           	 <li><a href="/admin">Dashboard</a></li>
 		           </ul>
 		           <ul class="nav navbar-nav navbar-right">
-		            <li><a href="/admin/options">Settings</a></li>
-		            <li><a href="/logout">Logout</a></li>
+
+		           	<li><a href="/admin/profile">Profile</a></li>
+		            <li><a href="/admin/options">Site Settings</a></li>
+		            <li><a href="/logout"><span class="label label-warning">Logout</span></a></li>
 		           </ul>
 		   
 		        </div>

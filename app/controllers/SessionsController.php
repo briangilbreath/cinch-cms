@@ -44,7 +44,7 @@ class SessionsController extends \BaseController {
 		Session::flash('message', 'Sucessfully logged in!');
 
 		if($attempt){
-			return Redirect::intended('/');
+			return Redirect::intended('/admin');
 		} 
 
 
