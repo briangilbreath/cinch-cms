@@ -140,12 +140,15 @@ class PostController extends \BaseController {
 		     }
 		])->first();
 
-		//meta info
-		View::share('page_title', $post->title);
-		View::share('page_description',  trim(preg_replace("/\s+/", ' ', Str::words($post->body,$words = 40, $end='...'))));
+		
 
 		//make view
 		if($post){
+
+			//meta info
+			View::share('page_title', $post->title);
+			View::share('page_description',  trim(preg_replace("/\s+/", ' ', Str::words($post->body,$words = 40, $end='...'))));
+		
 			return View::make('posts/show', array('post' => $post));
 		}else{
 			return Redirect::to('/');
