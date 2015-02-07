@@ -136,7 +136,7 @@ class TagController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$tag = tag::find($id);
+		$tag = Tag::find($id);
 
 		return View::make('tags/edit', array('tag' => $tag));
 	}
