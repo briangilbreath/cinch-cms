@@ -110,16 +110,12 @@ class TagController extends \BaseController {
 
 			
 			// pass meta description
-
 			View::share('page_title', $tag->name);
 
-			// make view
-		    if($tag->posts->count()){
-		    	return View::make('tags/show', array('posts' => $posts, 'title'=>$tag->name));
+			
+		    return View::make('tags/show', array('posts' => $posts, 'title'=>$tag->name));
 		    	
-		    }else{
-		    	return 'No posts tagged with that';
-		    }
+		  
 
 		}else{
 			//if no tag found, redirect to homepage
