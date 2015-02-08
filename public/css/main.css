@@ -88,6 +88,9 @@ font-size: .9em;
 	min-height: 400px;
 	position: relative;
 	background-size: cover;
+	-webkit-box-shadow: inset 0px -54px 102px -48px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px -54px 102px -48px rgba(0,0,0,0.75);
+	box-shadow: inset 0px -54px 102px -48px rgba(0,0,0,0.75);
 }
 
 .hero .logo{
