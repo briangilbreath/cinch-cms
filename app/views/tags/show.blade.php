@@ -10,7 +10,7 @@
 		@foreach($posts as $post)
 
 			<div class="post">
-				<h2>{{link_to('post/'. $post->slug, $post->title)}}</h2>
+				<h2>{{link_to($post->slug, $post->title)}}</h2>
 				<h5 class="date">{{$post->created_at}}</h5>
 				<p> {{$post->body}}</p>
 
