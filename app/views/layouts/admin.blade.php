@@ -102,5 +102,13 @@
         {{ HTML::script('js/image-picker.min.js'); }}
         {{ HTML::script('js/admin.js'); }}
 
+        <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+        <script>
+		CKEDITOR.replace( 'editor1', {
+			height: 260
+		} );
+		</script>	
+
     </body>
 </html>
