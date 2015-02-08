@@ -9,7 +9,7 @@
 		<div class="post">
 			<h2>{{$post->title}}</h2>
 			<h5 class="date">{{$post->created_at}}</h5>
-			<p> {{nl2br($post->body)}}</p>
+			<p> {{$post->body}}</p>
 
 			<div class="sign-off">
 				{{ HTML::image('images/sign-off.png', $alt="Brian Gilbreath", $attributes = array()) }} 

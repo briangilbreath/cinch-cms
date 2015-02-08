@@ -74,8 +74,13 @@
 
         <footer class="footer">
             <div class="inner">
-                <div class="logo"><a href="/">{{ HTML::image('images/brian-gilbreath-logo.png', $alt="Brian Gilbreath", $attributes = array()) }} <div class="name">Brian Gilbreath.com</div></a></div>
-               <div class="copyright"> &copy; {{date('Y')}} Brian Gilbreath</div>
+                <div class="logo">
+                    <a href="/">{{ HTML::image('images/brian-gilbreath-logo.png', $alt="Brian Gilbreath", $attributes = array()) }} <div class="name">Brian Gilbreath.com</div></a>
+                    <div class="name">Site custom made with <a href="http://laravel.com/" target="_blank">Laravel PHP</a> by Brian Gilbreath</div>
+                </div>
+                <br><br>
+                <div class="copyright"> &copy; {{date('Y')}} Brian Gilbreath</div>
+
             </div>
         </footer>
 
