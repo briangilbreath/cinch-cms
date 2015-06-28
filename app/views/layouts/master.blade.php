@@ -49,6 +49,7 @@
                             <li> {{link_to('tag/articles', 'Articles')}} </li>
                             <li> {{link_to('tag/thoughts', 'Thoughts')}} </li>
                             <li> {{link_to('about', 'About')}} </li>
+                            <li> {{link_to('http://briangilbreath.tumblr.com', 'Photography')}} </li>
                         </ul>
                     </div>
                 </nav>
